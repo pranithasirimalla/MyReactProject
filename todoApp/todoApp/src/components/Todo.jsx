@@ -8,6 +8,7 @@ export default function () {
 
   return (
     <div>
+      {console.log("todos--",todos)}
       <Form todos={todos} setTodos={setTodos} />
       <TodoList todos={todos} setTodos={setTodos} />
       <Footer todos={todos} />

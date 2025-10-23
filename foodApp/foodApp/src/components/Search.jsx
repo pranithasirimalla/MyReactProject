@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
-export default function Search() {
+import styles from './search.module.css';
+export default function Search({foodData,setFoodData}) {
     const [query, setQuery] = useState("pizza");
     const API_KEY="e5d16996706141e7b4d046c09680d416";
     const URL="https://api.spoonacular.com/recipes/complexSearch";
@@ -16,13 +17,14 @@ export default function Search() {
 
             const data = await res.json();
             console.log(data.results);
+            setFoodData(data.results);
         }
     fetchData();
     },[query]);
     return (
-        <div>
-            <input type="text" placeholder="Search for food..."  value={query} onChange={(e)=>setQuery(e.target.value)}/>
-            
+        <div className={styles.searchContainer}>
+            <input className={styles.input} type="text" placeholder="Search for food..."  value={query} onChange={(e)=>setQuery(e.target.value)}/>
+
         </div>
     );
 }
